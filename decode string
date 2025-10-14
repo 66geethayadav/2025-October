@@ -1,0 +1,20 @@
+def decodeString(s) :
+        st=[]
+        curr_str=""
+        curr_num=0
+        for ch in s:
+            if ch.isdigit():
+                curr_num=curr_num*10+int (ch)
+            elif ch=="[":
+                st.append((curr_str,curr_num))
+                curr_str=""
+                curr_num=0
+            elif ch=="]":
+                prevs,prevn=st.pop()
+                curr_str=prevs+prevn*curr_str
+            else:
+                curr_str+=ch
+        return curr_str 
+s='1432219'
+print(decodeString(s))                   
+        
