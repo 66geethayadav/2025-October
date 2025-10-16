@@ -1,0 +1,102 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Link:
+    def __init__(self):
+        self.head=None
+    def insertatbegin(self,data):
+        newnode=Node(data)
+        newnode.next=self.head
+        self.head=newnode
+    def insertatindex(self,data,index):
+        if index==0:
+            self.insertatbegin(data)
+            return
+        pos=0
+        curr=self.head
+        while curr is not None and pos+1!=index:
+            pos+=1
+            curr=curr.next
+        if curr is not None:
+            newnode=Node(data)
+            newnode.next=curr.next
+            curr.next=newnode   
+        else:
+            print("index not present")
+    def insertatend(self,data):
+        newnode=None(data)
+        if self.head is None:
+            self.head=newnode
+            return
+        while curr.next:
+            curr=curr.next
+        curr.next=newnode
+    def updata(self,index,val):
+        curr=self.head
+        pos=0
+        while curr is not None and pos!=index:
+            pos+=1
+            curr=curr.next
+        if curr is not None:
+            curr.data=val
+    def removefirst(self):
+        if self.head is None:
+            return
+        self.head=self.head.next
+    def removelast(self):
+        if self.head is None:
+            return
+        if self.head.next is None:
+            self.head=None
+            return
+        curr=self.head
+        while curr.next and curr.next.next:
+            curr=curr.next
+        curr.next=None 
+    def removeatindex(self,index):
+        if self.head is None:
+            return
+        if index==0:
+            self.removefirst()
+            return
+        curr=self.head
+        pos=0
+        while  curr is not None and  curr.next is not None and pos+1!=index:
+            pos+=1
+            curr=curr.next
+        if curr is not None and curr.next is not None:
+            curr.next=curr.next.next
+        else:
+            print("no index")
+    def removenode(self,data):
+        curr=self.head
+        if curr is not None and curr.data==data:
+            self.removefirst()
+            return
+        while curr is not None and curr.next is not None:
+            if curr.next.data==data:
+                curr.next=curr.next.next
+                return
+            curr=curr.next
+        print("data not exist")    
+    def size(self):
+        size1=0
+        curr=self.head
+        while curr :
+            size1+=1
+            curr=curr.next
+        print( size1)
+    def printll(self):
+        curr=self.head
+        while curr :
+            print(curr.data)
+            curr=curr.next
+ll=Link()                
+ll.insertatend(10)
+ll.insertatbegin(20)
+ll.insertatend(30)
+ll.printll()
+ll.removenode()
+ll.size()
+ll.printll()
