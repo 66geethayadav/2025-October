@@ -1,0 +1,36 @@
+class Node:
+    def _init_(self,data):
+        self.data=data
+        self.next=None
+class Link:
+    def _init_(self):
+        self.head=None
+    def insert(self,data):
+        newnode=Node(data)
+        if not self.head:
+            self.head=newnode
+            return
+        curr=self.head
+        while curr.next:
+            curr=curr.next
+        curr.next=newnode
+    def middle(self):
+        p=0
+        curr=self.head
+        while curr:
+            p+=1
+            curr=curr.next
+        mid=(p//2)
+        curr=self.head
+        for _ in range(mid):
+            curr=curr.next
+        return curr
+ll=Link()
+ll.insert(10)
+ll.insert(23)
+ll.insert(57)
+ll.insert(48)
+midi=ll.middle()
+print(midi.data)
+        
+    
